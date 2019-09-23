@@ -3,7 +3,7 @@ const User = require('../models/user')
 
 const auth = async (req, res, next)=>{
     try {
-        const decoded = jwt.verify(req.headers.bearer,'panda')
+        const decoded = jwt.verify(req.headers.bearer,process.env.JWTSECRET)
         const user = await User.findOne({ _id: decoded._id, 'tokens.token': req.headers.bearer })
         
         if(!user){

@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 const validator = require('validator')
 const Task = require('./task')
 
-mongoose.connect('mongodb://127.0.0.1:27017/task-manager-api', {
+mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser:true,
     useCreateIndex:true,
     useUnifiedTopology: true,
@@ -87,7 +87,7 @@ UserSchema.methods.getPublicData = async function(){
 }
 
 UserSchema.methods.generateAuthToken = async function(){
-    token = jwt.sign( { _id: this._id.toString() }, 'panda' )
+    token = jwt.sign( { _id: this._id.toString() }, process.env.JWTSECRET )
     this.tokens = this.tokens.concat({ token })
 
     await this.save()
