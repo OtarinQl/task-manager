@@ -79,7 +79,7 @@ router.post('/users/signup', async (req, res)=>{
     try {
         await user.generateAuthToken()
         accountMsg.welcomeEmail(user.email, user.name)
-        res.send(´Registro completo!\nSu Token: ${user.tokens[0]}´)
+        res.send('Registro completo!\nSu Token: ' + user.tokens.toString()´)
     } catch (e) {
         console.log(e)
         res.status(500).send(e)
