@@ -20,7 +20,7 @@
     "env-cmd":"^10.0.1"
   },
   "scripts": {
-    "start":"nodemon src/main/index.js",
+    "start":"node src/main/index.js",
     "dev":"env-cmd ./config/dev.env nodemon src/main/index.js"
   },
   "keywords": [],
