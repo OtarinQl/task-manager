@@ -119,7 +119,7 @@ router.post('/users/logoutAll', middleware.auth, async (req, res)=>{
     }
 })
 
-router.post('/users/delete', middleware.auth, async(req, res)=>{
+router.delete('/users/me', middleware.auth, async(req, res)=>{
     try {
         await req.user.remove()
         accountMsg.goodbyeEmail(req.user.email, req.user.name)
